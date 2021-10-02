@@ -1,0 +1,11 @@
+<div class="post">
+  <div class="header">
+    <h1>{{ post.title }}</h1>
+    <button routerLink="/" class="btn btn-success"  style="width: 7em; height: 40px;">Home</button>
+  </div>
+  <div [innerHTML]="post.text"></div>
+  <div class="info">
+    <strong>{{ post.author }}</strong>
+    <small>{{ post.date.toLocaleDateString() }}</small>
+  </div>
+</div>

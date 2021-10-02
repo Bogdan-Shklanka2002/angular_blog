@@ -1,0 +1,51 @@
+<div class="alert alert-danger" *ngIf="authService.error$ | async as error">
+    {{ error }}
+</div>
+
+<div class="alert alert-info" *ngIf="message">
+    {{ message }}
+</div>
+
+<form class="card" [formGroup]="form" (ngSubmit)="submit()">
+    <h2>Sign In</h2>
+    
+    <div class="form-group"
+        [ngClass] = "{invalid: form.get('email').touched && form.get('email').invalid}"
+    >
+        <label for="email">Email</label>
+        <input type="email" id="email" class="form-control" formControlName="email">
+        <div 
+            *ngIf="form.get('email').touched && form.get('email').invalid"
+            class="validation"
+        >
+            <small
+                *ngIf="form.get('email').errors.required" 
+            >email is required</small>
+            <small
+                *ngIf="form.get('email').errors.email" 
+            >Invalid format email</small>
+        </div>
+    </div>
+    <div class="form-group"
+        [ngClass] = "{invalid: form.get('password').touched && form.get('password').invalid}"
+    >
+        <label for="password">Password</label>
+        <input type="password" id="password" class="form-control" formControlName="password">
+        <div
+            *ngIf="form.get('password').touched && form.get('password').invalid"
+            class="validation"
+        >
+        <small
+            *ngIf="form.get('password').errors.required" 
+        >password is required</small>
+        <small
+            *ngIf="form.get('password').errors.minlength" 
+        >password will be more than 6 letter</small>
+        </div>
+    </div>
+
+    <button type="submit"
+        class="btn btn-primary"  
+        
+    >LOGIN</button>
+</form>

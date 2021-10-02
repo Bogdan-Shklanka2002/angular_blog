@@ -1,0 +1,19 @@
+<nav class="navbar">
+  <h1>
+    <a routerLink="/">Angular Admin</a>
+  </h1>
+  <ul class="nav justify-content-end" *ngIf="authService.isAuthenticated()">
+    <li routerLinkActive="active" class="nav-item">
+      <a class="nav-link" [routerLink]="['/admin', 'dashboard']">Dashboard</a>
+    </li>
+    <li routerLinkActive="active" class="nav-item">
+      <a class="nav-link" [routerLink]="['/admin', 'create']">Create Post</a>
+    </li>
+    <li routerLinkActive="active" class="nav-item">
+      <a class="nav-link" href="#" (click)="logout($event)">Log out</a>
+    </li>
+  </ul>
+</nav>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,52 @@
+<div *ngIf="form">
+   
+    <form [formGroup]="form" (ngSubmit)="submit()">
+        <h1>Create New Post</h1>
+        <div class="form-group"
+        [ngClass] = "{invalid: form.get('title').touched && form.get('title').invalid}"
+        >
+            <label for="title">Title post</label>
+            <input type="text" id="title" class="form-control" formControlName="title">
+            <div 
+                *ngIf="form.get('title').touched && form.get('title').invalid"
+                class="validation"
+            >
+                <small
+                    *ngIf="form.get('title').errors.required" 
+                >title is required</small>
+                <small
+                    *ngIf="form.get('title').errors.title" 
+                >Invalid format title</small>
+            </div>
+        </div>
+    
+        <div>
+            <label for="">Content Post</label>
+            <quill-editor formControlName='text'></quill-editor>
+        </div>
+    
+        <div class="form-group"
+        [ngClass] = "{invalid: form.get('author').touched && form.get('author').invalid}"
+        >
+            <label for="author">Author post</label>
+            <input type="text" id="author" class="form-control" formControlName="author">
+            <div 
+                *ngIf="form.get('author').touched && form.get('author').invalid"
+                class="validation"
+            >
+                <small
+                    *ngIf="form.get('author').errors.required" 
+                >title is required</small>
+                <small
+                    *ngIf="form.get('author').errors.author" 
+                >Invalid format title</small>
+            </div>
+        </div>
+        <button type="submit"
+            class="btn btn-primary"  
+            [disabled]=""
+        >UPDATE</button>
+    </form>
+
+</div>
+
